@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cabinReducer from "./cabin/cabinSlice";
+import reservationReducer from "./reservations/reservationSlice";
 
 const store = configureStore({
   reducer: {
-    cabin: cabinReducer,
+    reservations: reservationReducer,
   },
 });
 
 export default store;
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store;

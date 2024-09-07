@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
-    <div>
+    <div className="relative">
       <Header />
 
       <div>
-        <main>
+        <main className="min-h-screen">
           <Outlet />
         </main>
       </div>
