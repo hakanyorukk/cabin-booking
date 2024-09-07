@@ -1,6 +1,7 @@
 import Testimonials from "../components/Testimonials";
 import { IoMdArrowDown } from "react-icons/io";
 import ScrollToTop from "../utils/utils";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const scrollToBottom = () => {
@@ -11,6 +12,7 @@ const HomePage = () => {
   };
 
   ScrollToTop();
+  const navigate = useNavigate();
   return (
     <section className="h-full w-full bg-gradient-to-b from-cyan-900 to-emerald-950">
       <main className="relative h-screen  w-full ">
@@ -41,7 +43,10 @@ const HomePage = () => {
               reserve, and escape into nature with Woodwise, offering beautiful
               cabin retreats across Bulgaria's stunning landscapes.
             </h3>
-            <button className="mt-4 flex mx-auto animate-moveInBottom border-2 border-amber-900 px-8 py-4 text-emerald-100 hover:-translate-y-2 focus:translate-y-0 transition-transform ease duration-300 delay-200 main-button rounded-sm">
+            <button
+              className="mt-4 flex mx-auto animate-moveInBottom border-2 border-amber-900 px-8 py-4 text-emerald-100 hover:-translate-y-2 focus:translate-y-0 transition-transform ease duration-300 delay-200 main-button rounded-sm"
+              onClick={() => navigate("cabins")}
+            >
               Explore now
             </button>
           </div>

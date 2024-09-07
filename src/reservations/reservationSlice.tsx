@@ -1,15 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type Reservation = {
-  cabinId: string;
+declare type Reservation = {
+  cabinId: number;
   startDate: string;
   endDate: string;
-  guestName: string;
+  email: string;
+  name: string;
+  guestNumber: number;
+  totalNights: number;
+  totalPrice: number;
 };
 
 interface ReservationState {
   reservations: Reservation[];
-  dateRange: { start: Date | undefined; end: Date | undefined }; // Add dateRange to state
+  dateRange: { start: Date | undefined; end: Date | undefined };
 }
 
 const initialState: ReservationState = {
@@ -32,8 +36,6 @@ const reservationSlice = createSlice({
     },
   },
 });
-
-//export const {} = cabinSlice.actions;
 
 export const { createReservation, setDateRange } = reservationSlice.actions;
 export default reservationSlice.reducer;

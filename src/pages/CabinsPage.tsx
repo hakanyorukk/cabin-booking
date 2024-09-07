@@ -9,9 +9,7 @@ const CabinsPage = () => {
     <section className="w-full bg-gradient-to-b from-slate-900 to-emerald-950 p-12">
       <main className="flex flex-col mt-10 max-w-[90rem] mx-auto min-h-screen px-16 py-10 gap-16">
         <div className="text-emerald-50 flex flex-col gap-4 ">
-          <h3 className="text-4xl font-bold bg-gradient-to-l from-amber-400 to-emerald-700 text-transparent bg-clip-text">
-            Cozy Cabins for a Relaxing Getaway
-          </h3>
+          <h3 className="main-title">Cozy Cabins for a Relaxing Getaway</h3>
           <p className="text-lg ">
             Discover our selection of cozy cabins perfect for a relaxing
             retreat. Nestled in picturesque locations, each cabin offers modern

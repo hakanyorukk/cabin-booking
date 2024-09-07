@@ -6,15 +6,20 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { differenceInCalendarDays, format } from "date-fns";
+import { useDispatch } from "react-redux";
+import { createReservation } from "../reservations/reservationSlice";
+import { LuLoader2 } from "react-icons/lu";
+import toast from "react-hot-toast";
 
 const ReservationForm = ({
   maxGuest,
   priceNight,
+  cabinId,
 }: {
   maxGuest: number;
   priceNight: number;
+  cabinId: number;
 }) => {
-  console.log(maxGuest);
   const schema = z.object({
     name: z
       .string()
@@ -22,18 +27,71 @@ const ReservationForm = ({
     email: z.string().email(),
     guests: z
       .number()
-      .min(1, { message: "At least 1 guest" })
+      .min(1, { message: "At least 1 guest required" })
       .max(maxGuest, { message: `Maximum cabin capacity is ${maxGuest}` }),
   });
   const [range, setRange] = useState<DateRange>();
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  //   const {
+  //     register,
+  //     handleSubmit,
+  //     formState: { errors },
+  //     reset,
+  //   } = useForm({
+  //     resolver: zodResolver(schema),
+  //   });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+    reset,
+  } = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      email: "",
+      name: "",
+      guests: undefined,
+    },
   });
+
+  const totalNights =
+    range?.from && range?.to
+      ? differenceInCalendarDays(new Date(range.to), new Date(range.from))
+      : 0;
+
+  const totalPrice = totalNights * priceNight;
+
+  const onSubmit = (data: z.infer<typeof schema>) => {
+    if (!range?.from || !range?.to || totalNights <= 0 || totalPrice <= 0) {
+      toast.error("Please select a valid date range.");
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const reservation = {
+        cabinId: cabinId,
+        startDate: range.from.toISOString(),
+        endDate: range.to.toISOString(),
+        email: data.email,
+        name: data.name,
+        guestNumber: data.guests,
+        totalNights: totalNights,
+        totalPrice: totalPrice,
+      };
+      dispatch(createReservation(reservation));
+      reset();
+      toast.success("Reservation successful!");
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred during the reservation.");
+    } finally {
+      setIsLoading(false);
+      setRange(undefined);
+    }
+  };
 
   return (
     <div className="flex w-full bg-transparent/30">
@@ -58,7 +116,7 @@ const ReservationForm = ({
           numberOfMonths={2} // Show two months side by side
           footer={
             <div className="mt-4 text-center text-emerald-50 bg-emerald-600 p-4 rounded-md ">
-              {range?.from && range?.to ? (
+              {range?.from && range?.to && range?.from !== range?.to ? (
                 <div className="flex justify-between">
                   <div className="flex flex-col">
                     <h2 className="flex justify-start gap-2">
@@ -97,10 +155,7 @@ const ReservationForm = ({
         />
       </div>
       <div className="border-l border-slate-800 basis-1/2 p-6 h-full">
-        <form
-          onSubmit={handleSubmit((d) => console.log(d))}
-          className=" space-y-2 mt-8 r"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className=" space-y-2 mt-8 r">
           <div className="flex flex-col gap-4">
             <div className="w-full justify-center flex flex-col gap-2 ">
               <div className="flex  h-full items-center gap-4 justify-center">
@@ -171,7 +226,14 @@ const ReservationForm = ({
           </div>
           <div className="flex justify-center h-full w-full">
             <button className="main-button text-xl border-2 border-slate-700 py-2 px-6 text-emerald-100 mt-6 rounded-md">
-              Confirm Reservation
+              {isLoading ? (
+                <>
+                  <LuLoader2 size={20} className="animate-spin" /> &nbsp;
+                  Processing...
+                </>
+              ) : (
+                "Book Now"
+              )}
             </button>
           </div>
         </form>

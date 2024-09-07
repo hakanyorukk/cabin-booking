@@ -25,7 +25,7 @@ const Header = () => {
     <div
       className={` max-w-[85rem] mx-auto px-6 h-16 w-full z-50  fixed left-0 right-0 ${
         isSticky
-          ? "bg-transparent/30 backdrop-blur-md rounded-full top-4 border-2 border-emerald-800/20"
+          ? "bg-transparent/30 backdrop-blur-md rounded-full top-2 border-2 border-emerald-800/20"
           : "bg-transparent top-0 border-none"
       } transition-all duration-300 ease-out`}
     >

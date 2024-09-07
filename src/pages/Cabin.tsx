@@ -49,6 +49,7 @@ const Cabin = () => {
           <ReservationForm
             maxGuest={Number(cabin?.maxGuests)}
             priceNight={Number(cabin?.pricePerNight)}
+            cabinId={Number(cabin?.id)}
           />
         </div>
       </main>
