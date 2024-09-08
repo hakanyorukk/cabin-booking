@@ -94,20 +94,20 @@ const ReservationForm = ({
   };
 
   return (
-    <div className="flex w-full bg-transparent/30">
+    <div className="flex flex-col lg:flex-row w-full bg-transparent/30 ">
       <div className=" basis-1/2 w-full h-full  ">
         <DayPicker
           classNames={{
-            today: `text-green-700 font-bold text-lg`,
+            today: `text-green-600 font-bold text-base sm:text-lg`,
             selected: `bg-emerald-600 border-emerald-100`,
-            root: `p-8`,
+            root: `p-4 sm:p-8 text-sm sm:text-xl`,
             chevron: `hidden`,
             range_start: `mx-auto bg-cyan-500 text-slate-50 `,
             range_end: ` bg-cyan-500 text-slate-50  `,
-            month_caption: `text-emerald-600 font-bold text-2xl pb-6`,
-            months: `flex gap-6`,
+            month_caption: `text-emerald-600 font-bold text-lg sm:text-2xl pb-6`,
+            months: `flex gap-4 sm:gap-6`,
             range_middle: `bg-emerald-800`,
-            day: ` text-slate-400 w-12 h-10 items-center justify-center text-lg`,
+            day: ` text-slate-400 w-12 h-10 items-center justify-center   text-sm sm:text-lg`,
             weekdays: `text-green-500`,
           }}
           mode="range"
@@ -158,7 +158,7 @@ const ReservationForm = ({
         <form onSubmit={handleSubmit(onSubmit)} className=" space-y-2 mt-8 r">
           <div className="flex flex-col gap-4">
             <div className="w-full justify-center flex flex-col gap-2 ">
-              <div className="flex  h-full items-center gap-4 justify-center">
+              <div className="flex h-full items-center gap-4 justify-center">
                 <label htmlFor="name" className="form-label">
                   Full Name:
                 </label>

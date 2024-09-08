@@ -50,16 +50,18 @@ const Testimonials = () => {
 
   return (
     <main ref={ref} className="h-full w-full pt-[8rem]" id="#testimonials">
-      <div className=" flex flex-col gap-8 place-items-center justify-center w-full px-12 py-12">
-        <h2
-          className={`text-4xl font-bold bg-gradient-to-r from-amber-600 to-emerald-600 text-transparent bg-clip-text ${
-            isVisible ? "animate-moveInLeft" : "opacity-0"
-          }`}
-        >
-          What Our Happy Guests Say About Woodwise
-        </h2>
+      <div className=" flex flex-col gap-8 place-items-center justify-center w-full px-2 md:px-12 py-12 ">
+        <div className="w-full flex justify-center pl-6 sm:pl-0">
+          <h2
+            className={`text-xl sm:text-2xl md:text-4xl px-2 font-bold bg-gradient-to-r from-amber-600 to-emerald-600 text-transparent bg-clip-text  ${
+              isVisible ? "animate-moveInLeft" : "opacity-0"
+            }`}
+          >
+            What Our Happy Guests Say About Woodwise
+          </h2>
+        </div>
         <div
-          className={`h-4/5 w-full flex gap-16 p-12 ${
+          className={`h-4/5 w-full flex flex-col lg:flex-row gap-8 md:gap-16 p-8 md:p-12 ${
             isVisible ? "animate-moveInBottom" : "opacity-0"
           }`}
         >
@@ -69,20 +71,20 @@ const Testimonials = () => {
                 key={user.name}
                 className="flex flex-col basis-1/3 text-slate-50 p-6  justify-between rounded-xl bg-transparent/30 backdrop-blur-2xl hover:scale-110 transition-all ease duration-300 delay-200"
               >
-                <h3 className="text-2xl font-bold text-emerald-400">
+                <h3 className="text-xl md:text-2xl font-bold text-emerald-400">
                   {user.title}
                 </h3>
-                <p className="text-lg">{user.text}</p>
+                <p className="text-base md:text-lg">{user.text}</p>
                 <div className="w-full flex place-items-center gap-4 p-2">
                   <img src={user.photo} className="w-2/12 rounded-full" />
-                  <h4 className="text-xl">{user.name}</h4>
+                  <h4 className="text-base sm:text-xl">{user.name}</h4>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
-      <p className="max-w-[100rem] mx-auto pb-32 text-emerald-50 text-xl">
+      <p className="max-w-[100rem] mx-auto px-8 pb-32 text-emerald-50 text-sm sm:text-lg md:text-xl">
         At{" "}
         <span className="bg-gradient-to-r from-amber-400 to-emerald-400 text-transparent bg-clip-text">
           Woodwise

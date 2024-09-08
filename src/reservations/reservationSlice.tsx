@@ -34,8 +34,14 @@ const reservationSlice = createSlice({
     ) => {
       state.dateRange = action.payload;
     },
+    deleteReservation: (state, action: PayloadAction<number>) => {
+      state.reservations = state.reservations.filter(
+        (reservation) => reservation?.cabinId !== action.payload
+      );
+    },
   },
 });
 
-export const { createReservation, setDateRange } = reservationSlice.actions;
+export const { createReservation, setDateRange, deleteReservation } =
+  reservationSlice.actions;
 export default reservationSlice.reducer;
