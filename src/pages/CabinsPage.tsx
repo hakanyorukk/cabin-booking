@@ -6,7 +6,7 @@ const CabinsPage = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="w-full bg-gradient-to-b from-slate-900 to-emerald-950 p-4 md:p-12">
+    <section className="w-full p-4 md:p-12 h-full outline bg-gradient-to-b from-slate-900 to-emerald-950">
       <main className="flex flex-col mt-10 max-w-[90rem] mx-auto min-h-screen px-4 sm:px-6 xl:px-16 py-10 gap-16">
         <div className="text-emerald-50 flex flex-col gap-4">
           <h3 className="main-title">Cozy Cabins for a Relaxing Getaway</h3>
