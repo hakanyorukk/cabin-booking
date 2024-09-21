@@ -27,7 +27,15 @@ const HomePage = () => {
             muted
             className="w-full h-full object-cover"
           /> */}
-          <img src="/main-image.jpg" className="w-full h-full object-cover" />
+          <div
+            className="bg-cover bg-center"
+            style={{ backgroundImage: "url(/main-image-small.jpg)" }}
+          >
+            <img
+              src="/main-image.jpg"
+              className="w-full h-full aspect-square block object-center object-cover"
+            />
+          </div>
         </div>
 
         <div className="flex justify-center h-full absolute top-0 bottom-0 left-0 right-0 mx-auto mt-52 px-2 md:px-12">

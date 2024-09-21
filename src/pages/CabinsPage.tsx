@@ -24,8 +24,14 @@ const CabinsPage = () => {
                 key={cabin.id}
                 className="flex h-fit md:h-[18rem] border-2 border-slate-800 bg-transparent/20 rounded-md shadow-lg shadow-emerald-950 overflow-hidden"
               >
-                <div className="basis-[40%] h-full overflow-hidden">
-                  <img src={cabin.image} className="h-full w-full" />
+                <div
+                  className="basis-[40%] h-full overflow-hidden bg-cover bg-center"
+                  style={{ backgroundImage: `url(${cabin.image_small})` }}
+                >
+                  <img
+                    src={cabin.image}
+                    className="w-full h-full aspect-square block object-center object-cover"
+                  />
                 </div>
                 <div className="flex flex-col basis-[60%] justify-between">
                   <div className="flex flex-col px-4 sm:px-6 py-1 sm:py-6 md:py-8 justify-between  h-full">

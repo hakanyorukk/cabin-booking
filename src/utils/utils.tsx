@@ -21,6 +21,7 @@ export type CabinType = {
   pricePerNight: number;
   maxGuests: number;
   image: string;
+  image_small: string;
   location: {
     city: string;
     region: string;
@@ -36,6 +37,7 @@ export const cabinsInfo: CabinType[] = [
     pricePerNight: 120,
     maxGuests: 4,
     image: "/cabins/cabin_01.jpg",
+    image_small: "/cabins/cabin_01-small.jpg",
     id: 1,
     location: {
       city: "Teteven",
@@ -50,6 +52,7 @@ export const cabinsInfo: CabinType[] = [
     pricePerNight: 150,
     maxGuests: 6,
     image: "/cabins/cabin_02.jpg",
+    image_small: "/cabins/cabin_02-small.jpg",
     id: 2,
     location: {
       city: "Bansko",
@@ -64,6 +67,7 @@ export const cabinsInfo: CabinType[] = [
     pricePerNight: 175,
     maxGuests: 5,
     image: "/cabins/cabin_03.jpg",
+    image_small: "/cabins/cabin_03-small.jpg",
     id: 3,
     location: {
       city: "Batak",
@@ -78,6 +82,7 @@ export const cabinsInfo: CabinType[] = [
     pricePerNight: 200,
     maxGuests: 4,
     image: "/cabins/cabin_04.jpg",
+    image_small: "/cabins/cabin_04-small.jpg",
     id: 4,
     location: {
       city: "Sozopol",
@@ -92,6 +97,7 @@ export const cabinsInfo: CabinType[] = [
     pricePerNight: 130,
     maxGuests: 3,
     image: "/cabins/cabin_05.jpg",
+    image_small: "/cabins/cabin_05-small.jpg",
     id: 5,
     location: {
       city: "Tryavna",
@@ -106,6 +112,7 @@ export const cabinsInfo: CabinType[] = [
     pricePerNight: 110,
     maxGuests: 4,
     image: "/cabins/cabin_06.jpg",
+    image_small: "/cabins/cabin_06-small.jpg",
     id: 6,
     location: {
       city: "Veliko Tarnovo",
@@ -120,6 +127,7 @@ export const cabinsInfo: CabinType[] = [
     pricePerNight: 220,
     maxGuests: 8,
     image: "/cabins/cabin_07.jpg",
+    image_small: "/cabins/cabin_07-small.jpg",
     id: 7,
     location: {
       city: "Borovets",
@@ -134,6 +142,7 @@ export const cabinsInfo: CabinType[] = [
     pricePerNight: 140,
     maxGuests: 5,
     image: "/cabins/cabin_08.jpg",
+    image_small: "/cabins/cabin_08-small.jpg",
     id: 8,
     location: {
       city: "Petrich",
